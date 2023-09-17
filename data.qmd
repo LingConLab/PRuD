@@ -1,0 +1,51 @@
+---
+language: custom.yml
+---
+
+```{r}
+library(tidyverse)
+
+create_image_look_up <- function(img_src,
+                                 snd_src,
+                                 text = "&#x1f441;") {
+  paste0(
+    "<a ",
+    "onmouseover=\"resize(this, '200%')\" ",
+    "onmouseout=\"resize(this, '100%')\" ",
+    "onclick = \"window.open('",
+    img_src,
+    "', 'targetWindow', 'toolbar=no, location=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1090px, height=550px, top=25px left=120px'); sound_play('",
+    snd_src,
+    "');return false;\">",
+    text,
+    "</a>"
+  )
+}
+
+readxl::read_xlsx("data/data.xlsx") |> 
+  filter(!is.na(idiom),
+         !is.na(intonation_type),
+         intonation_type != "образец",
+         intonation_type != "ОБРАЗЕЦ") |> 
+  mutate(image = create_image_look_up(str_c("https://github.com/LingConLab/RuDiPro/raw/main/images/", filename, ".png"),
+                                      str_c("https://github.com/LingConLab/RuDiPro/raw/main/audio/", filename, ".wav")),
+         idiom = str_c("<a href = 'dialects.html#", link, "'>", idiom, "</a>"))  |> 
+  select(-c(latitude, longitude, filename))  |> 
+  mutate(across(everything(), as_factor)) |> 
+  mutate(transcription = as.character(transcription),
+         transcription2 = as.character(transcription2)) |> 
+  select(intonation_type, transcription, transcription2, image,  speaker, idiom, village, district, region, comment) |> 
+  DT::datatable(escape = FALSE, rownames = FALSE, filter = 'top',
+                options = list(pageLength = 20, dom = 'top'))
+```
+
+<script>
+function sound_play(x) {
+    var audio = new Audio();
+    audio.src = x;
+    audio.play();
+  }
+function resize(elem, percent) { 
+  elem.style.fontSize = percent; 
+  }
+</script>

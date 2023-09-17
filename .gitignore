@@ -1,0 +1,11 @@
+*.Rproj
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.zip
+4DEV.md
+/.quarto/*
+*.~lock.*
+/.quarto/
+*.docx

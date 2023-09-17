@@ -1,0 +1,98 @@
+---
+language: custom.yml
+---
+
+```{r}
+#| include: false
+dialects <- sf::st_read("data/dialects.json")
+```
+
+
+```{r}
+#| fig-height: 9 
+
+library(tidyverse)
+library(leaflet)
+
+readxl::read_xlsx("data/data.xlsx") |> 
+  mutate(longitude = as.double(longitude),
+         latitude = as.double(latitude)) |> 
+    filter(!is.na(idiom),
+         !is.na(intonation_type),
+         intonation_type != "образец",
+         intonation_type != "ОБРАЗЕЦ") ->
+    df
+
+m <- map(sort(unique(df$village)), function(v){
+  
+  df |> 
+    distinct(village, link) |>
+    filter(village == v) |> 
+    pull(link) ->
+    link
+  
+  df |>
+    filter(village == v) |> 
+    count(intonation_type, transcription2, sort = TRUE) |>  
+    rename(intonation = intonation_type,
+           notation = transcription2) ->
+    table1
+    
+  if(nrow(table1) > 12){
+    more_rows <- nrow(table1) - 12
+    
+    if(more_rows == 1){
+      morphology <- "значение"
+    } else if(more_rows %in% 2:4){
+      morphology <- "значения"
+    } else if(more_rows %in% 5:20){
+      morphology <- "значений"
+    } else {
+      morphology <- "значений"
+    }
+    
+    table1 |> 
+      slice(1:12) |> 
+      knitr::kable(format = "html", escape = FALSE, 
+                   caption = str_c("<a href = 'dialects.html#", link[1], "'>", v, "</a>")) |> 
+      kableExtra::add_footnote(str_c("и еще ", more_rows, " значений")) ->
+      result
+  } else {
+    table1 |> 
+      knitr::kable(format = "html", escape = FALSE, 
+                   caption = str_c("<a href = 'dialects.html#", link[1], "'>", v, "</a>")) ->
+      result
+  }
+  
+  result
+
+})
+
+df |> 
+  distinct(village, longitude, latitude) |> 
+  arrange(village) ->
+  df_for_map
+
+# check
+# df_for_map |> pull(village) == sort(unique(df$village))
+
+leaflet(dialects) |>
+  addTiles() |> 
+  addPolygons(stroke = FALSE, smoothFactor = 0.3, fillOpacity = 0.5,
+              fillColor = ~color) |> 
+  addCircleMarkers(
+    lng = df_for_map$longitude,
+    lat = df_for_map$latitude,
+    radius = 3,
+    label = df_for_map$village,
+    popup = m,
+    opacity = 1,
+    fillOpacity = 1,
+    popupOptions = leaflet::popupOptions(maxWidth = 700),
+    labelOptions = leaflet::labelOptions(
+        noHide = FALSE,
+        textOnly = TRUE,
+        direction = "center"
+      )
+    ) 
+```

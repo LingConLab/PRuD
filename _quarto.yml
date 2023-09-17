@@ -1,0 +1,32 @@
+project:
+  type: website
+  output-dir: docs
+  
+website:
+  title: "PRuD"
+  navbar:
+    left:
+      - href: index.qmd
+        text: главная
+      - href: about.qmd
+        text: о проекте
+      - href: dialects.qmd
+        text: информация о говорах
+      - href: rhythm.qmd
+        text: ритмическая структура
+      - href: map.qmd
+        text: карта
+      - href: data.qmd
+        text: данные
+        
+format:
+  html:
+    theme: cosmo
+    csl: apa.csl
+    toc: true
+    echo: false
+    warning: false
+    message: false
+    embed-resources: false
+    page-layout: full
+    bibliography: bibliography.bib
