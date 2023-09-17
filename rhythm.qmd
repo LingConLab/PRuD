@@ -4,7 +4,7 @@ language: custom.yml
 
 ```{r}
 audio <- function(snd_src) {
-  checkdown::insert_audio(src = paste0("https://github.com/LingConLab/PRuD/blob/main/audio/", snd_src, ".wav"))
+  checkdown::insert_audio(src = paste0("https://github.com/LingConLab/PRuD/raw/main/audio/", snd_src, ".wav"))
 }
 ```
 
