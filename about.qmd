@@ -83,8 +83,6 @@ create_image_look_up <- function(name,
 
 Князев С. В., Мороз Г. А., Дьяченко С.В. Корпус Просодии Русских Диалектов. 2024. Электронный ресурс: https://LingConLab.github.io/PRuD/, (дата обращения ...)
 
-## Ссылки на литературу
-
 <script>
 function sound_play(x) {
     var audio = new Audio();
@@ -95,3 +93,5 @@ function resize(elem, percent) {
   elem.style.fontSize = percent; 
   }
 </script>
+
+## Ссылки на литературу
