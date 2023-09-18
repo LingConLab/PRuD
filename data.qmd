@@ -27,8 +27,8 @@ readxl::read_xlsx("data/data.xlsx") |>
          !is.na(intonation_type),
          intonation_type != "образец",
          intonation_type != "ОБРАЗЕЦ") |> 
-  mutate(image = create_image_look_up(str_c("https://github.com/LingConLab/RuDiPro/raw/main/images/", filename, ".png"),
-                                      str_c("https://github.com/LingConLab/RuDiPro/raw/main/audio/", filename, ".wav")),
+  mutate(image = create_image_look_up(str_c("https://github.com/LingConLab/PRuD/raw/main/images/", filename, ".png"),
+                                      str_c("https://github.com/LingConLab/PRuD/raw/main/audio/", filename, ".wav")),
          idiom = str_c("<a href = 'dialects.html#", link, "'>", idiom, "</a>"))  |> 
   select(-c(latitude, longitude, filename))  |> 
   mutate(across(everything(), as_factor)) |> 
