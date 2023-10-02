@@ -18,6 +18,10 @@ website:
         text: карта
       - href: data.qmd
         text: данные
+  page-footer: 
+    right: 
+      - icon: github
+        href: https://github.com/lingconlab/PRuD/
         
 format:
   html:
