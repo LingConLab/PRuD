@@ -1,5 +1,7 @@
 ---
 language: custom.yml
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r}
@@ -22,7 +24,7 @@ create_image_look_up <- function(img_src,
   )
 }
 
-readxl::read_xlsx("data/data.xlsx") |> 
+readxl::read_xlsx("data/data.xlsx", guess_max = 2000) |> 
   filter(!is.na(idiom),
          !is.na(intonation_type),
          intonation_type != "образец",
