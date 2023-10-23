@@ -14,8 +14,6 @@ website:
         text: информация о говорах
       - href: rhythm.qmd
         text: ритмическая структура
-      - href: isr.qmd
-        text: интонация СРЛЯ
       - href: map.qmd
         text: карта
       - href: data.qmd
