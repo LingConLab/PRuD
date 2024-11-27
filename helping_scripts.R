@@ -40,5 +40,5 @@ images[!(images %in% list.files("/home/agricolamz/work/databases/PRuD/images/"))
   na.omit() |> 
   filter(!str_detect(missing, "\\D00\\.")) |> 
   bind_rows(missing) |> 
-  arrange(missing) |> 
+  arrange(missing) 
   writexl::write_xlsx("~/Desktop/missing.xlsx")
