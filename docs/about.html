@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.52">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -55,10 +55,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-698a3e3e052e465d540ee183e3f364e9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -158,7 +158,7 @@ div.csl-indent {
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
@@ -200,7 +200,7 @@ div.csl-indent {
 <li><code>%</code> — пограничный тон</li>
 <li><code>—</code> — фразовый тон</li>
 <li><code>*</code> — тональный акцент</li>
-<li><code>L*+H</code>, <code>L+H*</code>, <code>L*+H*</code>, <code>H*+L</code>, <code>H+L*</code>, <code>H*+L*</code>, etc — тайминг тонального акцента (синхронизация тонального движения относительно ударного слога слова-акцентоносителя)</li>
+<li><code>L*+H</code>, <code>L+H*</code>, <code>L*+H*</code>, <code>H*+L</code>, <code>H+L*</code>, <code>H*+L*</code>, etc. — тайминг тонального акцента (синхронизация тонального движения относительно ударного слога слова-акцентоносителя)</li>
 </ul>
 <div id="fig-vsps1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -244,7 +244,7 @@ div.csl-indent {
 <section id="фразовые-тоны-phrase-accents" class="level3">
 <h3 class="anchored" data-anchor-id="фразовые-тоны-phrase-accents">Фразовые тоны (phrase accents)</h3>
 <ul>
-<li><code>H-</code>: Ровный высокий тон на всех заакцентных слогах кроме последнего (реже - последнего и предпоследнего) во фразе. <a onmouseover="resize(this, '200%')" onmouseout="resize(this, '100%')" onclick="window.open('https://github.com/LingConLab/PRuD/raw/main/images/ва1.png', 'targetWindow', 'toolbar=no, location=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1090px, height=550px, top=25px left=120px'); sound_play('https://github.com/LingConLab/PRuD/raw/main/audio/ва1.wav');return false;">👁</a></li>
+<li><code>H-</code>: Ровный высокий тон на всех заакцентных слогах, кроме последнего (реже - последнего и предпоследнего) во фразе. <a onmouseover="resize(this, '200%')" onmouseout="resize(this, '100%')" onclick="window.open('https://github.com/LingConLab/PRuD/raw/main/images/ва1.png', 'targetWindow', 'toolbar=no, location=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1090px, height=550px, top=25px left=120px'); sound_play('https://github.com/LingConLab/PRuD/raw/main/audio/ва1.wav');return false;">👁</a></li>
 <li><code>L-</code>: Ровный низкий тон на всех заакцентных слогах. В транскрипции обычно не отмечается. <a onmouseover="resize(this, '200%')" onmouseout="resize(this, '100%')" onclick="window.open('https://github.com/LingConLab/PRuD/raw/main/images/пск3.png', 'targetWindow', 'toolbar=no, location=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1090px, height=550px, top=25px left=120px'); sound_play('https://github.com/LingConLab/PRuD/raw/main/audio/пск3.wav');return false;">👁</a></li>
 </ul>
 <section id="для-цитирования" class="level5">
@@ -391,8 +391,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -503,7 +501,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
