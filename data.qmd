@@ -36,7 +36,7 @@ readxl::read_xlsx("data/data.xlsx", guess_max = 2000) |>
   mutate(across(everything(), as_factor)) |> 
   mutate(transcription = as.character(transcription),
          transcription2 = as.character(transcription2)) |> 
-  select(intonation_type, transcription, transcription2, image,  speaker, idiom, village, district, region, comment) |> 
+  select(intonation_type, transcription, transcription2, image,  speaker, idiom, village, district, region) |>  
   DT::datatable(escape = FALSE, rownames = FALSE, filter = 'top',
                 options = list(pageLength = 20, dom = 'top'))
 ```
