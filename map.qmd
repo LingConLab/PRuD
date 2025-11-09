@@ -69,9 +69,11 @@ m <- map(sort(unique(df$village)), function(v){
 })
 
 df |> 
-  distinct(village, longitude, latitude) |> 
+  count(village, longitude, latitude) |> 
   arrange(village) ->
   df_for_map
+
+palette <- colorNumeric("Blues", domain = df_for_map$n)
 
 # check
 # df_for_map |> pull(village) == sort(unique(df$village))
@@ -83,8 +85,25 @@ leaflet(dialects) |>
   addCircleMarkers(
     lng = df_for_map$longitude,
     lat = df_for_map$latitude,
+    radius = 4,
+    label = df_for_map$village,
+    color  = "black",
+    popup = m,
+    opacity = 1,
+    fillOpacity = 1,
+    popupOptions = leaflet::popupOptions(maxWidth = 700),
+    labelOptions = leaflet::labelOptions(
+        noHide = FALSE,
+        textOnly = TRUE,
+        direction = "center"
+      )
+    ) |> 
+  addCircleMarkers(
+    lng = df_for_map$longitude,
+    lat = df_for_map$latitude,
     radius = 3,
     label = df_for_map$village,
+    color  = df_for_map$n |> palette(),
     popup = m,
     opacity = 1,
     fillOpacity = 1,
