@@ -80,7 +80,7 @@ palette <- colorNumeric("Blues", domain = df_for_map$n)
 
 leaflet(dialects) |>
   addTiles() |> 
-  addPolygons(stroke = FALSE, smoothFactor = 0.3, fillOpacity = 0.5,
+  addPolygons(stroke = FALSE, smoothFactor = 0.3, fillOpacity = 0.7,
               fillColor = ~color) |> 
   addCircleMarkers(
     lng = df_for_map$longitude,
