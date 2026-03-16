@@ -9,3 +9,5 @@
 *.~lock.*
 /.quarto/
 *.docx
+
+**/*.quarto_ipynb
